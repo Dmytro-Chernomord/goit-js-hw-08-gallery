@@ -13,8 +13,6 @@ const modalDivRef = document.querySelector(".js-lightbox");
 const closeModalButtonRef = document.querySelector(
   "button[data-action=close-lightbox]"
 );
-
-const galleryInsert = ulRef.insertAdjacentHTML("beforeend", galleryArr);
 const showImageRef = document.querySelector(".lightbox__image");
 const backdoropRef = document.querySelector(".lightbox__content");
 
@@ -43,9 +41,11 @@ function closeModal() {
 function openModal() {
   event.preventDefault();
   window.addEventListener("keyup", closeOnEscape);
-  const img = event.toElement.dataset.source;
+  const img = event.target.dataset.source;
   showImageRef.src = img;
   if (event.target !== event.currentTarget) {
     modalDivRef.classList.add("is-open");
   }
 }
+
+const galleryInsert = ulRef.insertAdjacentHTML("beforeend", galleryArr);
